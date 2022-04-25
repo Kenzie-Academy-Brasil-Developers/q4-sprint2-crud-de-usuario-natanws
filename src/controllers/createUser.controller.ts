@@ -5,7 +5,16 @@ import { UserRepository } from "../repositories/user/user.repository";
 const createUserController = async (req: Request, res: Response) => {
   const user: IUser = await new UserRepository().saveUser(req.validated as IUser)
 
-  return res.status(201).json(user)
+  const strippedHash = {
+    uuid: user.uuid,
+    name: user.name,
+    email: user.email,
+    isAdm: user.isAdm,
+    createdOn: user.createdOn,
+    updatedOn: user.updatedOn,
+  }
+
+  return res.status(201).json(strippedHash)
 }
 
 export default createUserController;

@@ -1,3 +1,3 @@
 FROM postgres
 ENV POSTGRES_PASSWORD='1234'
-ENV POSTGRES_DB='CrudUsuario'
+ENV POSTGRES_DB='crudusuario'

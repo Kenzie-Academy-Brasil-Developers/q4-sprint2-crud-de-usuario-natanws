@@ -4,7 +4,7 @@ import { ConnectionOptions } from "typeorm";
 
 dotenv.config();
 
-export default {
+const dbConfig = {
    type: "postgres",
    host: "localhost",
    port: 5432,
@@ -28,3 +28,5 @@ export default {
       subscribersDir: path.join(__dirname, "src/subscriber")
    }
 } as ConnectionOptions
+
+export default dbConfig

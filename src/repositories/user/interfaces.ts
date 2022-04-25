@@ -12,6 +12,7 @@ interface IUserRepo {
   saveUser: (user: IUser) => Promise<IUser>;
   findUsers: () => Promise<IUser[]>;
   findById: (id: string) => Promise<IUser[]>;
+  findByEmail: (email: string) => Promise<IUser>;
 }
 
 export { IUser, IUserRepo }

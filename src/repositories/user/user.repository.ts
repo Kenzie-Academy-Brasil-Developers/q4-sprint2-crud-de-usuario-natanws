@@ -12,6 +12,7 @@ class UserRepository implements IUserRepo {
   saveUser = async (user: IUser) => await this.ormRepository.save(user);
   findUsers = async () => await this.ormRepository.find();
   findById = async (id: string) => await this.ormRepository.find({ uuid: id })
+  findByEmail = async(email: string) => await this.ormRepository.findOne({ where: { email } });
 }
 
 export { UserRepository, IUser }
