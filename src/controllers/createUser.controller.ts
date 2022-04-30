@@ -1,20 +1,18 @@
 import { Request, Response } from "express";
+import { QueryFailedError } from "typeorm";
+import { User } from "../entities/User";
 import { IUser } from "../repositories/user/interfaces";
-import { UserRepository } from "../repositories/user/user.repository";
+import createUserService from "../service/createUser.service";
+import { handleError } from "../utils/error.util";
 
 const createUserController = async (req: Request, res: Response) => {
-  const user: IUser = await new UserRepository().saveUser(req.validated as IUser)
-
-  const strippedHash = {
-    uuid: user.uuid,
-    name: user.name,
-    email: user.email,
-    isAdm: user.isAdm,
-    createdOn: user.createdOn,
-    updatedOn: user.updatedOn,
+  try {
+    const user = await createUserService(req.validated as User)
+    
+    return res.status(201).json(user)
+  } catch (error) {
+    return handleError(error, res)
   }
-
-  return res.status(201).json(strippedHash)
 }
 
 export default createUserController;

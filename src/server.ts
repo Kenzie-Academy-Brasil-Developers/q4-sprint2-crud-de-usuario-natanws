@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import app from './app';
-import dbOptions from "../ormconfig"
+import dbOptions from "./db/ormconfig"
 
 const PORT = process.env.PORT ?? "3000";
 

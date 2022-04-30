@@ -7,25 +7,25 @@ dotenv.config();
 const dbConfig = {
    type: "postgres",
    host: "localhost",
-   port: 5432,
+   port: 5433,
    username: "postgres",
    password: process.env.POSTGRES_PASSWORD,
    database: process.env.POSTGRES_DB,
-   synchronize: true,
+   synchronize: false,
    logging: false,
    entities: [
-      path.join(__dirname, "src/entities/**/*.*")
+      path.join(__dirname, "../entities/**/*.*")
    ],
    migrations: [
-      path.join(__dirname, "src/migrations/**/*.*")
+      path.join(__dirname, "../migrations/**/*.*")
    ],
    subscribers: [
-      path.join(__dirname, "src/subscriber/**/*.*")
+      path.join(__dirname, "../subscriber/**/*.*")
    ],
    cli: {
-      entitiesDir: path.join(__dirname, "src/entities"),
-      migrationsDir: path.join(__dirname, "src/migrations"),
-      subscribersDir: path.join(__dirname, "src/subscriber")
+      entitiesDir: path.join(__dirname, "../entities"),
+      migrationsDir: path.join(__dirname, "../migrations"),
+      subscribersDir: path.join(__dirname, "../subscriber")
    }
 } as ConnectionOptions
 
