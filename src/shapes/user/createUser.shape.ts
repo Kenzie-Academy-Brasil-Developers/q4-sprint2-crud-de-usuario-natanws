@@ -7,7 +7,7 @@ const createUserShape = yup.object().shape({
   name: yup.string().required(),
   email: yup.string().email().required(),
   password: yup.string().required().transform((password) => hashSync(password, 10)),
-  isAdm: yup.boolean().default(() => false),
+  isAdm: yup.boolean().default(() => false).optional(),
   createdOn: yup.date().default(() => new Date()),
   updatedOn: yup.date().default(() => new Date()),
 })
