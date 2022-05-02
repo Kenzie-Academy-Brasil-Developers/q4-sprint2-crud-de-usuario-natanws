@@ -19,7 +19,6 @@ const validateToken = (req: Request, res: Response, next: NextFunction) => {
         throw new ErrorHandler(401, error);
       }
       req.uuid = (decoded as IDecoded).user.uuid
-      
       return next()
     })
   } catch (error) {

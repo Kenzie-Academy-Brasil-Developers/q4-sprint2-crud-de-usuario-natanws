@@ -1,3 +1,5 @@
+import { User } from "../../entities/User";
+
 interface IUser {
   uuid: string;
   name: string;
@@ -11,8 +13,10 @@ interface IUser {
 interface IUserRepo {
   saveUser: (user: IUser) => Promise<IUser>;
   findUsers: () => Promise<IUser[]>;
-  findById: (id: string) => Promise<IUser[]>;
+  findById: (id: string) => Promise<IUser>;
   findByEmail: (email: string) => Promise<IUser>;
+  updateUser: (data: IUser) => Promise<IUser>;
+  deleteUser: (id: string) => Promise<IUser>; 
 }
 
 export { IUser, IUserRepo }

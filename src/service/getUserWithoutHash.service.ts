@@ -4,7 +4,7 @@ import { UserRepository } from "../repositories";
 const getUserWithoutHash = async (req: Request) => {
   const { uuid } = req;
   const user = await new UserRepository().findById(uuid)
-  const { password, ...noHash } = user[0]
+  const { password, ...noHash } = user
   return noHash
 }
 
